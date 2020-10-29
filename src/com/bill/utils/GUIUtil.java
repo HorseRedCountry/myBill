@@ -65,6 +65,10 @@ public class GUIUtil {
     public static void showPanel(JPanel panel){
         showPanel(panel,0.85);
     }
+
+    /**
+     * 设置显示样式
+     */
     public static void useLNF(){
         try {
             javax.swing.UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");

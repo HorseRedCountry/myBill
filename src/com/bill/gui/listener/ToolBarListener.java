@@ -1,4 +1,8 @@
-package com.bill.gui.panel;
+package com.bill.gui.listener;
+
+import com.bill.gui.panel.CategoryPanel;
+import com.bill.gui.panel.MainPanel;
+import com.bill.gui.panel.ReportPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,6 +20,8 @@ public class ToolBarListener implements ActionListener {
         JButton button= (JButton) e.getSource();
         if (button==panel.reportButton){
             panel.workingPanel.show(ReportPanel.instance);
+        }if (button==panel.categoryButton){
+            panel.workingPanel.show(CategoryPanel.instance);
         }
     }
 }
