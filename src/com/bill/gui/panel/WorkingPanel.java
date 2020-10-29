@@ -5,7 +5,7 @@ import javax.swing.*;
 /**
  * @author Major Tom
  * @date 2020/10/28 22:06
- * @description
+ * @description 自己包装的面板类
  */
 public abstract class WorkingPanel extends JPanel {
     /**
