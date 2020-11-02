@@ -35,7 +35,7 @@ public class MainPanel extends JPanel{
         GUIUtil.setImageIcon(configButton,"config.png","设置");
         GUIUtil.setImageIcon(backupButton,"backup.png","备份");
         GUIUtil.setImageIcon(recoveryButton,"restore.png","恢复");
-
+        //放置对应的按钮
         toolBar.add(spendButton);
         toolBar.add(recordButton);
         toolBar.add(categoryButton);

@@ -1,6 +1,5 @@
 package com.bill.gui.panel;
 
-import com.bill.entity.Record;
 import com.bill.utils.ChartUtil;
 import com.bill.utils.GUIUtil;
 

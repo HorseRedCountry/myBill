@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * @author Major Tom
  * @date 2020/10/28 21:12
- * @description
+ * @description 面板工具类
  */
 public class CenterPanel extends JPanel {
     /**拉伸比例*/
