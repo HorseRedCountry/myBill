@@ -1,8 +1,6 @@
 package com.bill.gui.listener;
 
-import com.bill.gui.panel.CategoryPanel;
-import com.bill.gui.panel.MainPanel;
-import com.bill.gui.panel.ReportPanel;
+import com.bill.gui.panel.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,6 +20,16 @@ public class ToolBarListener implements ActionListener {
             panel.workingPanel.show(ReportPanel.instance);
         }if (button==panel.categoryButton){
             panel.workingPanel.show(CategoryPanel.instance);
+        }if (button==panel.backupButton){
+            panel.workingPanel.show(BackupPanel.instance);
+        }if (button== panel.configButton){
+            panel.workingPanel.show(ConfigPanel.instance);
+        }if (button== panel.recordButton){
+            panel.workingPanel.show(RecordPanel.instance);
+        }if (button== panel.recoveryButton){
+            panel.workingPanel.show(RecoveryPanel.instance);
+        }if (button== panel.spendButton){
+            panel.workingPanel.show(SpendPanel.instance);
         }
     }
 }
