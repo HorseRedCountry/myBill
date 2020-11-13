@@ -18,7 +18,7 @@ public class Record {
     private String comment;
     /**时间*/
     private Date date;
-
+    public Record(){}
     public Record(int id, int spend, int categoryId, String comment, Date date) {
         this.id = id;
         this.spend = spend;
