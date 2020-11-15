@@ -66,4 +66,15 @@ public class Record {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "Record{" +
+                "id=" + id +
+                ", spend=" + spend +
+                ", categoryId=" + categoryId +
+                ", comment='" + comment + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }
