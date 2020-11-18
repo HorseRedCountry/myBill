@@ -1,11 +1,12 @@
 package com.bill.dao;
 
+import com.bill.entity.Category;
 import com.bill.entity.Record;
 import com.bill.utils.DBUtil;
 import com.bill.utils.DateUtil;
 
 import java.sql.*;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -120,14 +121,73 @@ public class RecordDao {
     }
 
     /**
-     *
-     * @param start
-     * @param count
-     * @return
+     * 根据消费类别查出该类别下所有的消费
+     * @param categoryId 消费分类id
+     * @return 该分类下所有的消费
      */
-    public List<Record> listRecord(int start,int count){
-        return null;
+    public List<Record> findRecordsByCategoryId(int categoryId){
+        List<Record> records=new ArrayList<>();
+        String sql="select * from record where category_id="+categoryId;
+        try (Connection connection = DBUtil.getConnection();
+            Statement statement=connection.createStatement();) {
+            ResultSet resultSet=statement.executeQuery(sql);
+            while (resultSet.next()){
+                Record record=new Record();
+                int id=resultSet.getInt("id");
+                int spend=resultSet.getInt("spend");
+                String comment=resultSet.getString("comment");
+                Date date=resultSet.getDate("date");
+
+                record.setId(id);
+                record.setDate(date);
+                record.setComment(comment);
+                record.setSpend(spend);
+                record.setCategoryId(categoryId);
+
+                records.add(record);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return records;
     }
+
+    /**
+     * 查询出当月消费情况
+     * @param start 开始日期
+     * @param end 结束日期
+     * @return 所有消费
+     */
+    public List<Record> getMonthRecord(Date start,Date end){
+        List<Record> records=new ArrayList<>();
+        String sql="select * from record where date >=? and date <=?";
+        try (Connection connection = DBUtil.getConnection();
+            PreparedStatement ps=connection.prepareStatement(sql);) {
+            ps.setDate(1,DateUtil.util2Sql(start));
+            ps.setDate(2,DateUtil.util2Sql(end));
+            ResultSet resultSet=ps.executeQuery();
+            while (resultSet.next()){
+                Record record=new Record();
+                int id=resultSet.getInt("id");
+                int spend=resultSet.getInt("spend");
+                String comment=resultSet.getString("comment");
+                Date date=resultSet.getDate("date");
+                int categoryId=resultSet.getInt("category_id");
+
+                record.setId(id);
+                record.setDate(date);
+                record.setComment(comment);
+                record.setSpend(spend);
+                record.setCategoryId(categoryId);
+
+                records.add(record);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return records;
+    }
+
     /**
      * 测试用
      * @param args
