@@ -11,6 +11,8 @@ public class Config {
     private String key;
     private String value;
 
+    public Config() { }
+
     public Config(int id, String key, String value) {
         this.id = id;
         this.key = key;
@@ -39,5 +41,14 @@ public class Config {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return "Config{" +
+                "id=" + id +
+                ", key='" + key + '\'' +
+                ", value='" + value + '\'' +
+                '}';
     }
 }
