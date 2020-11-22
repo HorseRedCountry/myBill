@@ -4,6 +4,8 @@ import com.bill.entity.Category;
 import com.bill.utils.DBUtil;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Major Tom
@@ -90,6 +92,30 @@ public class CategoryDao {
         }
         return category;
     }
+
+    /**
+     * 查询所有消费分类
+     * @return
+     */
+    public List<Category> list(){
+        List<Category> categories=new ArrayList<>();
+        String sql="select * from category order by id desc";
+        try (Connection connection = DBUtil.getConnection();
+            Statement statement=connection.createStatement();) {
+            ResultSet resultSet=statement.executeQuery(sql);
+            while (resultSet.next()){
+                Category category=new Category();
+                int id=resultSet.getInt(1);
+                String name=resultSet.getString(2);
+                category.setId(id);
+                category.setName(name);
+                categories.add(category);
+            }
+        }catch(SQLException exception){
+            exception.printStackTrace();
+        }
+        return categories;
+    }
     /**
      * 测试
      * @param args
@@ -105,5 +131,6 @@ public class CategoryDao {
 //        category.setId(1);
 //        dao.updateCategory(category);
         System.out.println(dao.getCategory(1).toString());
+        System.out.println(dao.list().toString());
     }
 }

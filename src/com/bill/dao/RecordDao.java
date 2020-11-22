@@ -1,6 +1,5 @@
 package com.bill.dao;
 
-import com.bill.entity.Category;
 import com.bill.entity.Record;
 import com.bill.utils.DBUtil;
 import com.bill.utils.DateUtil;
